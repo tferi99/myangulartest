@@ -1,0 +1,79 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+        header.title='REST Demo';
+        header.description='CRUD using REST.'
+    "
+        ></div>
+
+<div ng-controller="SimpleRestController">
+    <fieldset>
+        <legend>Test database</legend>
+
+        <table class="table table-striped">
+            <thead>
+            <tr style="background-color: #bbbbbb; font-weight: bold">
+                <td>ID</td>
+                <td>First name</td>
+                <td>Last name</td>
+                <td>Email(s)</td>
+            </tr>
+            </thead>
+            <tr ng-repeat="i in items">
+                <td>{{ i.id }}</td>
+                <td>{{ i.firstName }}</td>
+                <td>{{ i.lastName }}</td>
+                <td>
+                    <span ng-repeat="email in i.emails"><span ng-if="!$first">,</span> {{email}}</span>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <fieldset>
+        <legend>Search</legend>
+        <form class="form-horizontal" ng-submit="get()">
+            <div class="form-group">
+                <label class="control-label col-sm-2">Person ID</label>
+                <div class="col-sm-2">
+                    <input class="form-control" ng-model="currentPersonId" focus/>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-primary"><i class="fa fa-search"/> Search</button>
+                </div>
+            </div>
+        </form>
+
+        <table class="table table-striped">
+            <thead>
+            <tr style="background-color: #bbbbbb; font-weight: bold">
+                <td>ID</td>
+                <td>First name</td>
+                <td>Last name</td>
+                <td>Email(s)</td>
+                <td></td>
+            </tr>
+            </thead>
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.firstName }}</td>
+                <td>{{ item.lastName }}</td>
+                <td>
+                    <span ng-repeat="email in item.emails"><span ng-if="!$first">,</span> {{ email }}</span>
+                </td>
+                <td><a><i class="fa fa-edit"></i></a></td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <script type="text/ng-template" id="personEditDialog.html">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-2">First name</label>
+                <div class="col-sm-4">
+                    <
+                </div>
+            </div>
+        </form>
+    </script>
+
+</div>

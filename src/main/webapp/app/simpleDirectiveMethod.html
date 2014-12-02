@@ -1,0 +1,16 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+        header.title='Simple directive with callback function';
+        header.description='See console on blur event'
+    "
+        ></div>
+
+<div ng-controller="SimpleDirecMethodController">
+
+    <h5>Type here anything and leave field</h5>
+    <input ng-blur="doSomething(myObject)" ng-model="value"/>
+
+    <p/>
+    <pre>{{result | json}}</pre>
+</div>
+

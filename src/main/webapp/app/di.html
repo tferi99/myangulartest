@@ -1,0 +1,29 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+    header.title='DI';
+    header.description='Dependency injection demo - service injected into controller'
+"></div>
+
+<fieldset ng-controller="DiCtrl">
+    <legend>Normal DI</legend>
+    <table border="1">
+        <thead>
+            <tr class="header">
+                <td>ID</td>
+                <td>Type</td>
+            </tr>
+        </thead>
+        <tr ng-repeat="car in getAll()">
+            <td>{{car.id}}</td>
+            <td>{{car.type}}</td>
+        </tr>
+    </table>
+</fieldset>
+
+<p/>
+
+<fieldset ng-controller="DiCtrlExpl">
+    <legend>Explicit DI</legend>
+    {{get(0).type}}
+</fieldset>
+

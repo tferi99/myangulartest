@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <link data-require="bootstrap-css" data-semver="3.1.1" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet" />
+
+    <script data-require="jquery" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.js"></script>
+    <script data-require="angular.js@1.2.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js" data-semver="1.2.17"></script>
+    <script data-require="bootstrap" data-semver="3.1.1" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-controller="TestCtrl">
+
+    <div class="container fill">
+        <form id="task-search-form" class="form form-horizontal" novalidate>
+
+            <div class="col-sm-2 ">
+                <input class="form-control " type="text" placeholder="still empty">
+            </div>
+            <button class="btn btn-primary" ng-click="go()">
+                <i ng-show="searching" class="fa fa-spinner fa-spin"></i> Test
+            </button>
+        </form>
+    </div>
+
+</body>
+
+</html>
+        

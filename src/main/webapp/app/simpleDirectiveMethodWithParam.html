@@ -1,0 +1,15 @@
+<div ng-controller="SimpleDirectiveMethodWithParamCtrl">
+
+    <div ng-include src="'component/head.html'"
+         ng-init="
+                header.title='Simple directive with callback function and parameter passing';
+                header.description='Here passed a parameter from parent scope into directive\'s isolated scope then this scope variable will be returned to parent controller via callback method.'
+            "></div>
+
+    <input ng-model="data"/> {{data}}
+
+    <my-directive user="cat" user-data="data" callback="doSomething(user, userData)"></my-directive>
+    <my-directive user="dog" user-data="data" callback="doSomething(user, userData)"></my-directive>
+    <my-directive user="pig" user-data="data" ></my-directive> <span class="note">method not specified for PIG</span>
+
+</div>

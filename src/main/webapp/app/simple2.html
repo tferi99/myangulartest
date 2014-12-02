@@ -1,0 +1,31 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+        header.title='Data bind demo';
+        header.description='Simple 2-way data bind with controller.'
+"></div>
+
+<div id="mainDiv" style="width: 100px; height: 100px; background-color: yellow; text-align: center; vertical-align: middle">
+    Click me
+</div>
+
+<form>
+    <input ng-model="name"/>
+    <button onclick="test()">Test</button>
+</form>
+<div>{{ name }}</div>
+
+<script type="text/javascript">
+    function test()
+    {
+        var i = 5;
+        i++;
+        devLog.info("i=" + i);
+    }
+
+    $(function() {
+        $('#mainDiv').click(function() {
+            $('#mainDiv').effect( "shake");
+        });
+    });
+
+</script>

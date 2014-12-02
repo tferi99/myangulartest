@@ -1,0 +1,42 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Directive recognition';
+            header.description='It demonstrates how directive names compiled (resolved) into directives';
+        "></div>
+
+<p>
+    <ul class="note">
+        <li>We typically refer to directives by their case-sensitive camelCase normalized name (e.g. ngModel).</li>
+        <li>However, since HTML is case-insensitive, we refer to directives in the DOM by lower-case forms, typically using dash-delimited attributes on DOM elements (e.g. ng-model).</li>
+        <li style="list-style-type: none">&nbsp;</li>
+        <li>The normalization process is as follows:</li>
+            <ul>
+                <li>Strip x- and data- from the front of the element/attributes.</li>
+                <li>Convert the :, -, or _-delimited name to camelCase.</li>
+            </ul>
+        <li>Here are some equivalent examples of elements that match ngBind: <span style="font-weight: bold; color: green">ng-bind, ng:bind, ng_bind, data-ng-bind, x-ng-bind</span></li>
+    </ul>
+</p>
+
+<p class="note">
+Here we are testing built-in ngModel directive.
+</p>
+
+<form name="frm" ng-controller="DirRecogController" ng-submit="onSave()">
+    <table>
+        <tr>
+            <td>Name</td>
+            <td><input ng-model="person.name" required/></td>
+            <td class="note">directive: <span class="important">ng-model</span></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input data-ng:model="person.email" required/></td>
+            <td class="note">directive: <span class="important">data-ng:model</span></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button ng-disabled="frm.$invalid">OK</button></td>
+        </tr>
+    </table>
+</form>

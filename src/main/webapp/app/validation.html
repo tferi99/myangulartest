@@ -1,0 +1,158 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Validation';
+            header.description='You cannot save it until fields are not filled correctly. Input value stored into model only from a valid input field.';
+        "></div>
+
+<div>
+    <form name="frmTest" ng-controller="ValidationController">
+        <table border="1">
+            <thead>
+                <tr>
+                    <td class="header">Field label</td>
+                    <td class="header">Field value</td>
+                    <td class="header">Validation message</td>
+                    <td class="header">Validation errors</td>
+                    <td class="header">Model</td>
+                    <td class="header">Modified</td>
+                    <td class="header">Unmodified</td>
+                    <td class="header">Valid</td>
+                    <td class="header">Invalid</td>
+                </tr>
+            </thead>
+            <tr>
+                <td>Name</td>
+                <td><input name="name" type="text" ng-model="user.name" ng-minlength="4" required ng-maxlength="10" /></td>
+                <td ng-class="{error: frmTest.name.$invalid}"><div ng-show="frmTest.name.$invalid">
+                    <i class="icon-hand-left"></i>
+                    <span ng-show="frmTest.name.$error.required">Required</span>
+                    <span ng-show="frmTest.name.$error.minlength">Min 4</span>
+                    <span ng-show="frmTest.name.$error.maxlength">Max 10</span>
+                </div></td>
+                <td class="note">{{frmTest.name.$error}}</td>
+                <td>{{user.name}}</td>
+                <td>{{frmTest.name.$dirty}}</td>
+                <td>{{frmTest.name.$pristine}}</td>
+                <td>{{frmTest.name.$valid}}</td>
+                <td ng-class="{ok: !frmTest.name.$invalid, error: frmTest.name.$invalid}">{{frmTest.name.$invalid}}</td>
+            </tr>
+
+            <tr>
+                <td>Email</td>
+                <td><input name="email" type="email" ng-model="user.email" required/></td>
+                <td ng-class="{error: frmTest.email.$invalid}">
+                    <div ng-show="frmTest.email.$invalid">
+                        <i class="icon-hand-left"></i>
+                        <span ng-show="frmTest.email.$error.required">Required</span>
+                        <span ng-show="frmTest.email.$error.email">Bad email format</span>
+                    </div></td>
+                <td class="note">{{frmTest.email.$error}}</td>
+                <td>{{user.email}}</td>
+                <td>{{frmTest.email.$dirty}}</td>
+                <td>{{frmTest.email.$pristine}}</td>
+                <td>{{frmTest.email.$valid}}</td>
+                <td ng-class="{ok: !frmTest.email.$invalid, error: frmTest.email.$invalid}">{{frmTest.email.$invalid}}</td>
+            </tr>
+
+            <tr>
+                <td>Age</td>
+                <td><input name="age" type="number" ng-model="user.age" required/></td>
+                <td ng-class="{error: frmTest.age.$invalid}">
+                    <div ng-show="frmTest.age.$invalid">
+                        <i class="icon-hand-left"></i>
+                        <span ng-show="frmTest.age.$error.required">Required</span>
+                        <span ng-show="frmTest.age.$error.number">Bad number format</span>
+                    </div></td>                                             <td class="note">{{frmTest.age.$error}}</td>
+                <td>{{user.age}}</td>
+                <td>{{frmTest.age.$dirty}}</td>
+                <td>{{frmTest.age.$pristine}}</td>
+                <td>{{frmTest.age.$valid}}</td>
+                <td ng-class="{ok: !frmTest.age.$invalid, error: frmTest.age.$invalid}">{{frmTest.age.$invalid}}</td>
+            </tr>
+
+            <tr>
+                <td>&nbsp;</td>
+                <td><button ng-disabled="frmTest.$invalid" ng-click="onSave()">OK</button></td>
+                <td><button ng-click="onOtherAction()">Other action</button></td>
+            </tr>
+        </table>
+
+        <p/>
+
+
+        <table border="1">
+            <tr>
+                <td colspan="2">
+                    <h4 ng-class="{ok: !frmTest.$invalid, error: frmTest.$invalid}" style="text-align: center; padding: 20px">Form status</h4>
+                </td>
+            </tr>
+            <tr>
+                <td class="header">Form modified ($dirty)</td>
+                <td class="data-field">{{frmTest.$dirty}}</td>
+            </tr>
+            <tr>
+                <td class="header">Form unmodified ($pristine)</td>
+                <td class="data-field">{{frmTest.$pristine}}</td>
+            </tr>
+            <tr>
+                <td class="header">Form valid ($valid)</td>
+                <td class="data-field">{{frmTest.$valid}}</td>
+            </tr>
+            <tr>
+                <td class="header">Form invalid ($invalid)</td>
+                <td class="data-field">{{frmTest.$invalid}}</td>
+            </tr>
+            <tr>
+                <td class="header">Validation errors ($error)</td>
+                <td class="data-field">{{frmTest.$error}}</td>
+            </tr>
+        </table>
+
+        <p/>
+        <div>
+            <h5>user</h5>
+            <pre>{{user | json}}</pre>
+
+            <h5>frmTest</h5>
+            <json-panel label="frmTest" data="frmTest" all="true" show-toggle-all="true"/>
+            <button ng-click="test()">Test</button>
+        </div>
+    </form>
+
+    <hr/>
+    <h3>Bad pattern - forms with the same name</h3>
+    <div ng-controller="ValidationController">
+        <div ><scope-id/></div>
+        <form name="badForm" class="form-horizontal" style="background-color: #ffff00">
+            <h4>Form name: badForm</h4>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Name</label>
+                <div class="col-sm-4"><input class="form-control" ng-model="val" required="1"></div>
+                <div class="col-sm-2"><scope-id/></div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-2">
+                    <button class="btn-primary" ng-click="onSave()" ng-disabled="badForm.$invalid">OK</button> Form invalid:{{badForm.$invalid}}
+                </div>
+            </div>
+        </form>
+
+        <form name="badForm" class="form-horizontal" style="background-color: gray">
+            <h4>Form name: badForm</h4>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Name</label>
+                <div class="col-sm-4"><input class="form-control" ng-model="val2" required="1"></div>
+                <div class="col-sm-2"><scope-id/></div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-2">
+                    <button class="btn-primary" ng-click="onSave2()" ng-disabled="badForm.$invalid">OK</button> Form invalid:{{badForm.$invalid}}
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+
+</div>
+

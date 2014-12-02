@@ -1,0 +1,18 @@
+<div ng-include src="'component/head.html'"
+ ng-init="
+    header.title='Shopping card';
+    header.description='Calculation, event handling, adding new item to collection'
+"></div>
+
+<h1>Your Order</h1>
+
+<div ng-controller='CartController'>
+    <div ng-repeat='item in items'>
+        <span>{{item.title}}</span>
+        <input ng-model='item.quantity'>
+        <span>{{item.price | currency}}</span>
+        <span>{{item.price * item.quantity | currency}}</span>
+        <button ng-click="remove($index)">Remove</button>
+    </div>
+    <button ng-click="add()">Add</button>
+</div>

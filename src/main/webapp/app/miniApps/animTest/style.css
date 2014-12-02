@@ -1,0 +1,5 @@
+.animFadeInRight.ng-enter {
+    -webkit-animation: fadeInRightBig 1s;
+    animation: fadeInRightBig 1s;
+}
+

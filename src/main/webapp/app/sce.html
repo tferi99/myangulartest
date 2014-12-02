@@ -1,0 +1,66 @@
+<div ng-controller="SceController">
+    <div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='SCE (Strict Contextual Escaping) &lt; v1.2';
+            header.description='';
+    "></div>
+
+    <button ng-click='message("Who is " + who + " ?")'>Who</button>
+
+    <fieldset>
+        <legend>
+            Without handling
+            <div class="note">HTML tags not resolved</div>
+        </legend>
+
+
+        <p>{{html1}}</p>
+        <p>{{html2}}</p>
+
+        <!-- THIS WOULD GENERATE ERROR:  Attempting to use an unsafe value in a safe context.
+        <p ng-bind-html="html1"></p>
+        <p ng-bind-html="html2"></p>
+        -->
+    </fieldset>
+
+
+    <fieldset>
+        <legend>
+            Using '$sce.trustAsHtml()'
+            <div class="note">renderHtml() calls $sce.trustAsHtml()</div>
+        </legend>
+
+        <p ng-bind-html="renderHtml(html1)"></p>
+        <p ng-bind-html="renderHtml(html2)"></p>
+
+        <!-- here you cannot use filter, like this. Syntax error resulted.
+        <p ng-bind-html="renderHtml(txt | highlight:whatIsImportant)"></p>
+        -->
+    </fieldset>
+
+    <fieldset>
+        <legend>
+            Using directive ($sce.trustAsHtml() inside)
+            <div class="note">You can apply other filters. Directive will be applied after filters.</div>
+        </legend>
+
+        <p safe-html="html1"></p>
+        <p safe-html="html2"></p>
+
+        <p safe-html="txt | highlight:whatIsImportant"></p>
+    </fieldset>
+
+    <fieldset>
+        <legend>
+            Using filter
+            <div class="note">You can apply multiple filters in a cascade. safeHtml filter should be the last.</div>
+
+        </legend>
+
+        <p ng-bind-html="html1 | safeHtml"></p>
+        <p ng-bind-html="html2 | safeHtml"></p>
+
+        <p ng-bind-html="txt | highlight:whatIsImportant | safeHtml"></p>
+    </fieldset>
+</div>
+

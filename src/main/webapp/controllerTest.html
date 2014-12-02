@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>ControllerTest</title>
+
+    <script src="app/jslib/angular-1.2.18/angular.js"></script>
+    <link rel="stylesheet" type="text/css" href="app/css/main.css">
+
+    <script type="text/javascript">
+
+        var app = angular.module('app', [])
+        .config(function() {
+            console.log("APP config");
+        })
+        .run(function() {
+            console.log("APP run");
+        });
+        app.controller('TestController', function($scope) {
+            console.log("Controller constructor - scope[" + $scope.$id + "]");
+
+            $scope.init = function(ctrlId) {
+                $scope.ctrlId = ctrlId;
+                console.log("init"  + getIdForLog());
+            }
+
+            $scope.txt = "hello";
+            $scope.active = true;
+
+            $scope.onChangeActive = function() {
+                console.log("Changed active:" + $scope.active + getIdForLog());
+            };
+            $scope.onSave = function() {
+                console.log("Saving..."  + getIdForLog());
+            };
+            $scope.onActivate = function() {
+                $scope.active = true;
+            };
+            $scope.onDeactivate = function() {
+                $scope.active = false;
+            };
+
+            function getIdForLog()
+            {
+                var s = " - scope[" + $scope.$id + "]";
+                if ($scope.ctrlId) {
+                    s += " ctrl[" + $scope.ctrlId + "]";
+                }
+                return s;
+            }
+        });
+    </script>
+
+</head>
+
+<body>
+
+<div ng-include src="'app/component/head.html'"
+    ng-init="
+        header.title='Controller test';
+        header.note='Logged to console';
+        header.description='It demonstrates controller initialization, simple local event handlers and submit handlers.'
+    "
+></div>
+
+<fieldset ng-controller="TestController">
+    <legend>Form 1 - scope[{{$id}}]</legend>
+    <form ng-init="init(1)" ng-submit="onSave()">
+        <table>
+            <tr>
+                <td><input type="checkbox" ng-model="active"></td>
+                <td>{{ active }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <button ng-click="onActivate()">Activate</button>
+                    <button ng-click="onDeactivate()">Deactivate</button>
+                </td>
+            </tr>
+        </table>
+        <button>Save</button>
+    </form>
+</fieldset>
+
+<fieldset ng-controller="TestController">
+    <legend>Div without form - scope[{{$id}}]</legend>
+    <div ng-init="init(2)" ng-submit="onSave()">
+        <table>
+            <tr>
+                <td><input type="checkbox" ng-model="active"></td>
+                <td>{{ active }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <button ng-click="onActivate()">Activate</button>
+                    <button ng-click="onDeactivate()">Deactivate</button>
+                </td>
+            </tr>
+        </table>
+        <button>Save</button>
+    </div>
+</fieldset>
+
+<fieldset ng-controller="TestController">
+    <legend>Form 2 - scope[{{$id}}]</legend>
+    <form ng-init="init(3)" ng-submit="onSave()">
+        <table>
+            <tr>
+                <td><input type="checkbox" ng-model="active"></td>
+                <td>{{ active }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <button ng-click="onActivate()">Activate</button>
+                    <button ng-click="onDeactivate()">Deactivate</button>
+                </td>
+            </tr>
+        </table>
+        <button>Save</button>
+    </form>
+</fieldset>
+
+</body>
+</html>

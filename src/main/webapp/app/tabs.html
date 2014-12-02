@@ -1,0 +1,89 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Tabs';
+            header.description='';
+        "></div>
+
+
+<h3>Simple Adding tabset</h3>
+<div class="note">Without controller, static content loading</div>
+<tabset>
+    <tab heading="One">
+        Hello 1
+    </tab>
+    <tab heading="Two">                                                                                                       `
+        Hello 2
+    </tab>
+    <tab heading="Three">
+        Hello 3
+    </tab>
+</tabset>
+
+<hr/>
+
+<h3>Adding tabs dynamically</h3>
+
+<div ng-controller="TabsParentController">
+    <tabset>
+        <tab ng-repeat="workspace in workspaces" heading="{{workspace.name}}" active=workspace.active>
+            <div ng-controller="TabsChildController" ng-init="workspace=workspace">
+                <div class="row row">
+                    <div class="col-md-3">
+                        {{workspace.id}} : {{ workspace.name}}
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" ng-model="workspace.name"/>
+                    </div>
+                </div>
+            </div>
+        </tab>
+        <tab select="addWorkspace()">
+            <tab-heading>
+                <i class="fa fa-plus"></i>
+            </tab-heading>
+        </tab>
+    </tabset>
+
+    <pre>{{workspaces | json}}</pre>
+</div>
+
+<hr/>
+
+<h3>Loading tab content dynamically</h3>
+<div class="note">Tabs are loaded when select initializes varN variable</div>
+<div>
+
+<div ng-controller="TabsDynamicController">
+    <tabset>
+        <tab heading="Tab 1" select="loaded.var1=true">
+            <div ng-if="loaded.var1" ng-controller="TabContentController" ng-init="init(1)">
+                <h2>1</h2>
+            </div>
+        </tab>
+
+        <tab heading="Tab 2" select="loaded.var2=true">
+            <div ng-if="loaded.var2" ng-controller="TabContentController" ng-init="init(2)">
+                <h2>2</h2>
+            </div>
+        </tab>
+    </tabset>
+    <pre>{{loaded | json}}</pre>
+</div>
+<hr/>
+
+<h3>Loading tab content dynamically - from model using repeat</h3>
+<div class="note">Tabs are loaded when select sets a variable in 'loaded' object</div>
+<div ng-controller="TabsDynamicController">
+    <tabset>
+        <tab ng-repeat="tab in tabs" heading="{{tab.heading}}" select="loaded[tab.id]=true">
+            <div ng-if="loaded[tab.id]" ng-controller="TabContentController" ng-init="init(tab.id)">
+                <h2>{{tab.id}}</h2>
+            </div>
+        </tab>
+    </tabset>
+    <pre>{{loaded | json}}</pre>
+</div>
+
+<hr/>
+
+

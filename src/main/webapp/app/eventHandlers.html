@@ -1,0 +1,27 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Event handlers';
+            header.description='
+                If you register event on root scope it won\'t we destroyed when you leave the current page.
+                In additionally you can register an event handler multiple times.
+            ';
+        "></div>
+
+<div ng-controller="EvHandlerController">
+    <h4>Current scope: {{$id}}</h4>
+    <ul>
+        <li>register event handler (you can do that multiple times)</li>
+        <li>fire event and watch log</li>
+        <li>leave page and go back</li>
+        <li>fire event and watch log again</li>
+    </ul>
+    <button ng-click="onRegisterEvent()">Register event on root scope</button>
+    <button ng-click="showListeners()">Listeners on root scope</button>
+    <button ng-click="onFireEvent()">Fire event</button>
+
+    <h4 style="color: red">!!! WARNING - ANTIPATTERN !!!</h4>
+    <p style="color: red; font-style: italic">
+        Never register an event handler into global scope from a local scope. Otherwise event handlers can be duplicated.
+        In additionally, scopes will be create memory leaks because destroying views won't delete scopes since thay are referred by event handlers.
+    </p>
+</div>

@@ -1,0 +1,93 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Nested forms and validations';
+            header.description='Nested validation namespaces can be created with ng-form. For every form which has a name will be a variable created on the current scope.';
+        "></div>
+
+
+<div>
+    <scope-id/>
+</div>
+
+<div>
+    <h3>Simple form</h3>
+    <div class="note">If a form has a name and it's in a scope, it will have validation properties ($error, $valid, $invalid, ...)</div>
+    <form name="frmTest" class="form-horizontal" ng-controller="NestedFormsController">
+        <div class="form-group">
+            <label class="control-label col-sm-2">Value</label>
+            <div class="col-sm-4"><input class="form-control" ng-model="val" required="1"></div>
+            <div class="control-label col-sm-2"><scope-id/></div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Invalid</label>
+            <div class="col-sm-4">{{frmTest.$invalid}}</div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Error</label>
+            <div class="col-sm-4">{{frmTest.$error}}</div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-2"><button class="btn-primary" ng-click="onSave()" ng-disabled="frmTest.$invalid">OK</button></div>
+            <div class="control-label col-sm-2"><scope-id/></div>
+        </div>
+    </form>
+
+     <hr/>
+
+   <h3>Nested form</h3>
+    <div class="note">
+        If a form has a name and it's in a scope, it will have validation properties ($error, $valid, $invalid, ...).
+        All (nested) forms has the SAME scope if they are in the same controller's container.
+        So forms and their nested forms has a variable on the same scope.
+    </div>
+    <form name="frmTest" class="form-horizontal" ng-controller="NestedFormsController">
+
+        <ng-form name="form1">
+            <div class="form-group">
+                <label class="control-label col-sm-2">Value</label>
+                <div class="col-sm-4"><input class="form-control" ng-model="val" required="1"></div>
+                <div class="control-label col-sm-2"><scope-id/></div>
+            </div>
+
+            <ng-form name="form2">
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Value</label>
+                    <div class="col-sm-4"><input class="form-control" ng-model="val2" required="1"></div>
+                    <div class="control-label col-sm-2"><scope-id/></div>
+                </div>
+            </ng-form>
+        </ng-form>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2">frmTest Invalid</label>
+            <div class="col-sm-4">{{frmTest.$invalid}}</div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">frmTest Error</label>
+            <div class="col-sm-4">{{frmTest.$error}}</div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">form1 Invalid</label>
+            <div class="col-sm-4">{{form1.$invalid}}</div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">form1 Error</label>
+            <div class="col-sm-4">{{form1.$error}}</div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">form2 Invalid</label>
+            <div class="col-sm-4">{{form2.$invalid}}</div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">form2 Error</label>
+            <div class="col-sm-4">{{form2.$error}}</div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-2"><button class="btn-primary" ng-click="onSave()" ng-disabled="form1.$invalid">OK</button></div>
+            <div class="control-label col-sm-2"><scope-id/></div>
+        </div>
+    </form>
+</div>
+

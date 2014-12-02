@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modules</title>
+    <script src="app/component/angular-1.2.16/angular.js"></script>
+    <link rel="stylesheet" type="text/css" href="app/css/main.css">
+
+    <script type="application/javascript">
+        console.log("---- START OF SCRIPTS ----");
+
+        //---------------------------------- module 21 ----------------------------------
+        var mod21 = angular.module('mod21', [], function($provide) {
+            console.log("module21 ");
+
+            $provide.factory('service21', function() {
+                console.log("service21 constructor");
+                return {
+                    greeting: function() {
+                        return 'Hello from service21';
+                    }
+                };
+            })
+        });
+        console.log("AFTER Module(" + mod21.name + ")");
+
+        //---------------------------------- module 2 ----------------------------------
+        var mod2 = angular.module('mod2', ['mod21']).config(function() {
+            console.log("Module(" + mod2.name +  ') - config')
+        }).run(function() {
+            console.log("Module(" + mod2.name +  ') - run')
+        });
+        console.log("AFTER Module(" + mod2.name + ")");
+
+        //---------------------------------- module 1.1 ----------------------------------
+        var mod11 = angular.module('mod11', []).config(function() {
+            console.log("Module(" + mod11.name +  ') - config')
+        }).run(function() {
+            console.log("Module(" + mod11.name +  ') - run')
+        });
+        console.log("AFTER Module(" + mod11.name + ")")
+
+        mod11.factory('service11', function() {
+            console.log("service11 constructor");
+            return {
+                greeting: function() {
+                    return 'Hello from service11';
+                }
+            };
+        });
+
+        //---------------------------------- module 2 ----------------------------------
+        var mod1 = angular.module('mod1', ['mod11']).config(function() {
+            console.log("Module(" + mod1.name +  ') - config')
+        }).run(function() {
+                    console.log("Module(" + mod1.name +  ') - run')
+        });
+        console.log("AFTER Module(" + mod1.name + ")");
+
+        mod1.factory('service1', function() {
+            console.log("service1 constructor");
+            return {
+                greeting: function() {
+                    return 'Hello from service1';
+                }
+            };
+        });
+
+        //---------------------------------- main module ----------------------------------
+        var app = angular.module('main', ['mod1', 'mod2']).config(function(service1Provider) {
+            var service1 = service1Provider.$get();
+            var msg = service1.greeting();
+            console.log("Service service1 called from module config block: " + msg);
+
+        });
+        console.log("AFTER Module(" + app.name + ")");
+
+        function Controller11($scope, $log, service1, service11, service21)
+        {
+            $scope.greeting = function() {
+                $log.log("Controller11 constructor");
+                $log.log(service21.greeting());
+            }
+        }
+
+        console.log("---- END OF SCRIPTS ----");
+    </script>
+</head>
+
+<body ng-app="main">
+    <div ng-include src="'app/component/head.html'"
+         ng-init="
+            header.title='Module init';
+            header.description='Initialization of multiple modules (config, run)'
+        "></div>
+
+     <div ng-controller="Controller11">
+        <button ng-click="greeting()">Hello</button>
+    </div>
+    <p/>
+
+    <div class="note">
+        NOTE: See JS console for log about module/service initialization.
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Number of watchers';
+            header.description='';
+        "></div>
+
+<div ng-controller="WatchNumController">
+    <button ng-click="dumpWatches()">Watchers</button>
+</div>

@@ -1,0 +1,37 @@
+<style>
+    .testDiv {
+        text-align: center;
+        width: 200px;
+        height: 50px;
+        border: solid 1px black;
+    }
+</style>
+
+<div ng-include src="'component/head.html'"
+    ng-init="
+    header.title='Events';
+    header.description='Events, data binding'
+"></div>
+
+<fieldset>
+    <legend>Form with dependent values</legend>
+    <form ng-controller="EventTestController">
+        <table>
+            <tr>
+                <td>Estimation:</td>
+                <td><input ng-model="estimation"></td>
+            </tr>
+            <tr>
+                <td>Needed (estimation * 10) - managed by ng-change:</td>
+                <td>{{ needed }}</td>
+            </tr>
+            <tr>
+                <td>Needed2 (estimation * 10) - managed by watch:</td>
+                <td>{{ needed2 }}</td>
+            </tr>
+            <tr><td>
+                <button ng-click="onResetEstimation()">Default estimation</button>
+            </td></tr>
+        </table>
+    </form>
+</fieldset>

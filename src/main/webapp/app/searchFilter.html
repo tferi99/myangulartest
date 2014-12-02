@@ -1,0 +1,35 @@
+<div ng-controller="SearchFilterCtrl">
+    <div ng-include src="'component/head.html'"
+         ng-init="
+            header.title='Search filter';
+            header.description='';
+    "></div>
+
+    <h3>Search all</h3>
+    <div class="note">
+        Demonstrating simple search filter, highlighting search term in output texts using filter, and because output can contain HTML code it sould not
+        filtered out but should be trusted as safe HTML.
+        Search term should be escaped here because highlight expects a reglar expression.
+    </div>
+    <div class="input-group col-sm-2">
+        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+        <input type="text" class="form-control" placeholder="..." ng-model="searchTerm">
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="p in persons | filter:searchTerm | orderBy:'name'">
+            <td ng-bind-html="p.name | highlight:escapeRegex(searchTerm) | safeHtml"></td>
+            <td ng-bind-html="p.email | highlight:escapeRegex(searchTerm) | safeHtml"></td>
+            <td ng-bind-html="p.phone | highlight:escapeRegex(searchTerm) | safeHtml"></td>
+        </tr>
+    </table>
+    <hr/>
+
+</div>

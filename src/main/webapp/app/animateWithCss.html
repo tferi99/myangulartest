@@ -1,0 +1,27 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Animate with CSS';
+            header.description=''
+        "></div>
+
+<div ng-controller="AnimateWithCssCtrl" ng-init="d1=true">
+    <h4>Show/Hide animation with ngAngular-animate.css class</h4>
+    <div class="note">
+        Here you only have to a a class, event related classes (enter, leave, show, hide) classes created and bound to animate.css action automatically.
+        It's very comfortable. FROM REFERENCE:  .dn-hinge (runs fadeIn for enter, move and show, runs hinge for leave and hide)
+    </div>
+    <button ng-click="d1=!d1">Toggle D1</button>
+    <div id="d1" style="width: 100px; height: 100px; background-color: red" ng-if="d1" class="dn-fade"></div>
+    <hr/>
+
+    <h4>Transition</h4>
+    <div class="note">
+        Transition of changing left position of a relative div.
+    </div>
+    <div id="d2" class="transLeftSlow" style="width: 100px; height: 100px; background-color: green; position: relative" ng-style="d2XStyle" class="dn-hinge"></div>
+    <button ng-click="d2x=0">&lt;-</button>
+    <button ng-click="d2x=400">-&gt;</button>
+    <json-panel data="d2XStyle"></json-panel>
+    <hr/>
+</div>
+<div></div>

@@ -1,0 +1,39 @@
+<!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" threshold="all">
+
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+        	<!-- 
+            <param name="ConversionPattern" value="%p - %C{1}.%M(%L) | %m%n"/>
+            <param name="ConversionPattern" value="%-5p|%C|%m%n"/>
+            <param name="ConversionPattern" value="##### %p - %C{1}.%M(%L) | %m%n"/>
+            <param name="ConversionPattern" value="##### %p - %c - %M(%L) | %m%n"/>
+             -->
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %-5p %c{2} %x - %m%n" />
+                        
+        </layout>
+    </appender>
+    
+	<appender name="LOGFILE" class="org.apache.log4j.FileAppender">
+		<param name="File" value="/var/log/apas/standard-provisioning.log"/>
+		<param name="Threshold" value="DEBUG"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %-5p %c{2} %x - %m%n" />
+		</layout>
+	</appender>
+
+    <logger name="org.springframework">
+        <level value="DEBUG"/>
+    </logger>
+
+
+    <root>
+        <level value="WARN"/>
+        <appender-ref ref="CONSOLE"/>
+        <!--
+        <appender-ref ref="LOGFILE"/>
+        -->
+    </root>
+
+</log4j:configuration>

@@ -1,0 +1,132 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Scopes';
+            header.description='Demo for scope inheritance'
+        "></div>
+
+    <fieldset>
+        <legend>Root scope <scope-id/></legend>
+        My name is <b>{{ myName }} (data from root scope)</b>
+    </fieldset>
+    <p/>
+
+    <fieldset ng-controller="scopesController1">
+        <legend>Simple Scope <scope-id/></legend>
+
+        <table>
+            <tr>
+                <td>Color: {{ color }}</td>
+            </tr>
+            <tr>
+                <td>My name again: <cica ng-bind="myName"/></td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <hr>
+    <h3>Scope inheritance</h3>
+    <div class="note">
+        Scope inheritance is prototypically. That means if you put a value directly to parent scope (color), it cannot be changed from the child scope since inherited reference is read-only.
+        But if you package properties into an object (info.color) then scopes share the same properties.
+    </div>
+    <fieldset ng-controller="scopesController1">
+        <legend>Parent scope - controller1 <scope-id/></legend>
+        <table>
+            <tr>
+                <td>Color:</td>
+                <td><input ng-model="color"/></td>
+                <td>{{ color }}</td>
+            </tr>
+            <tr>
+                <td>info.Color:</td>
+                <td><input ng-model="info.color"/></td>
+                <td>{{ info.color }}</td>
+            </tr>
+        </table>
+
+        <fieldset ng-controller="scopesController2">
+            <legend>Child scope - controller2 <scope-id/></legend>
+            <table>
+                <tr>
+                    <td>Color:</td>
+                    <td><input ng-model="color"/></td>
+                    <td>{{ color }}</td>
+                </tr>
+                <tr>
+                    <td>info.Color:</td>
+                    <td><input ng-model="info.color"/></td>
+                    <td>{{ info.color }}</td>
+                </tr>
+            </table>
+        </fieldset>
+    </fieldset>
+
+    <hr>
+    <h3>Scope nesting</h3>
+    <fieldset class="outside">
+        <legend>Outside of scopes <scope-id/></legend>
+        <span></span>
+
+        <fieldset class="parent" ng-controller="scopesParent">
+            <legend>Parent <scope-id/></legend>
+
+            <table>
+                <tr>
+                    <td>Color:</td>
+                    <td>{{color}}</td>
+                </tr>
+                <tr>
+                    <td>Size:</td>
+                    <td>{{size}}</td>
+                </tr>
+            </table>
+            <button onclick="alert(getColor(this))">getColor</button>
+            <button onclick="alert(getSize(this))">getSize</button>
+
+            <fieldset class="child1" ng-controller="scopesChild1">
+                <legend>Child1 <scope-id/></legend>
+
+                <table>
+                    <tr>
+                        <td>Color:</td>
+                        <td>{{color}}</td>
+                    </tr>
+                    <tr>
+                        <td>Size:</td>
+                        <td>{{size}}</td>
+                    </tr>
+                </table>
+                <button onclick="alert(getColor(this))">getColor</button>
+                <button onclick="alert(getSize(this))">getSize</button>
+            </fieldset>
+
+            <button onclick="alert($('.parent').scope.size)">1</button>
+            <button onclick="alert(getSize(this))">2</button>
+        </fieldset>
+        <button onclick="alert(getScope('.parent').color)">getColor</button>
+
+
+    </fieldset>
+
+    <script type="text/javascript">
+        function getColor(elem)
+        {
+            var e = angular.element(elem);      // alias to jQuery()
+            var s = e.scope();
+            return s.color;
+        }
+        function getSize(elem)
+        {
+            var e = jQuery(elem);
+            var s = e.scope();
+            return s.size;
+        }
+
+        function getScope(jquerySelector)
+        {
+            var elem = jQuery(jquerySelector);
+            return elem.scope();
+        }
+    </script>
+
+

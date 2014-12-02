@@ -1,0 +1,91 @@
+<div ng-controller="StyleController">
+    <div ng-include src="'component/head.html'" ng-init="
+        header.title='Style, class';
+        header.description='Changing styles dynamically'
+    "></div>
+
+        <fieldset>
+            <legend>Getting style class name fragment from controller</legend>
+
+            <div style="font-weight: bold">
+                <!-- simpleDI -->
+                <div class="enabled-{{ createEnabled }} error-{{ createError }}">Create</div>
+
+                <!-- class value array -->
+                <div ng-class="[readEnabledClass, readErrorClass]">Read</div>
+
+                <!-- JS class, where class properties are class names and values are boolean -->
+                <div ng-class="{disabled: !deleteEnabled, err: deleteError}">Delete</div>
+            </div>
+            <p/>
+
+            <form>
+                <table border="1">
+                    <thead class="tableHead">
+                    <tr>
+                        <td></td>
+                        <td>Enabled</td>
+                        <td>Error</td>
+                    </tr>
+                    </thead>
+
+                    <tr>
+                        <td class="tableHead">Create</td>
+                        <td><input type="checkbox" ng-model="createEnabled"></td>
+                        <td><input type="checkbox" ng-model="createError"></td>
+                    </tr>
+                    <tr>
+                        <td class="tableHead">Read</td>
+                        <td><input type="checkbox" ng-model="readEnabled"></td>
+                        <td><input type="checkbox" ng-model="readError"></td>
+                    </tr>
+                    <tr>
+                        <td class="tableHead">Delete</td>
+                        <td><input type="checkbox" ng-model="deleteEnabled"></td>
+                        <td><input type="checkbox" ng-model="deleteError"></td>
+                    </tr>
+                </table>
+            </form>
+        </fieldset>
+
+    <fieldset>
+        <legend>Getting style class from controller directly</legend>
+
+        <div ng-class="['err', 'disabled']">This is test message</div>
+        <div ng-class="otherTestClasses">This is other test message</div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Getting conditional style classes from map</legend>
+
+        <div ng-class="{important: isImportant, warn: isWarn}">This is test message</div>
+        <p/>
+        <form>
+            <table border="1">
+                <tr>
+                    <td class="tableHead">Important</td>
+                    <td><input type="checkbox" ng-model="isImportant"></td>
+                </tr>
+                <tr>
+                    <td class="tableHead">Read</td>
+                    <td><input type="checkbox" ng-model="isWarn"></td>
+                </tr>
+            </table>
+        </form>
+
+        <h4>Mixing fixed and optional classes</h4>
+        <div class="note">You cannot mix 'class' and 'ng-class', so in this case use 'ng-class' and add fixed classes with 'true' expression.</div>
+
+        <div ng-class="{important: isImportant, warn: true, menu: true}">This is test message</div>
+        <p/>
+        <form>
+            <table border="1">
+                <tr>
+                    <td class="tableHead">Important</td>
+                    <td><input type="checkbox" ng-model="isImportant"></td>
+                </tr>
+            </table>
+        </form>
+
+    </fieldset>
+</div>

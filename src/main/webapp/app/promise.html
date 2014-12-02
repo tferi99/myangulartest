@@ -1,0 +1,35 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+    header.title='Promise';
+    header.description='Using promise: deferred=$q.defer(), deferred.resolve(), deferred.reject(), deferred.notify(), promise=deferred.promise, promise.then(okFunc, errFunc, notifFunc)'
+"></div>
+
+<div ng-controller="PromiseCtrl">
+    <table class="table">
+        <tr>
+            <td class="col-sm-4">Value will be incremented asynchronously ({{waitTime1}} secs)</td>
+            <td class="col-sm-2"><input type="number" class="form-control" ng-model="result1" ng-disabled="processing1"></td>
+            <td>
+                <button class="btn btn-primary" ng-click="createAndCallPromise1()" ng-disabled="processing1">Increment
+                    <i ng-class="{'fa': true, 'fa-play': !processing1, 'fa-spinner': processing1, 'fa-spin':processing1}"></i>
+                </button>
+            </td>
+        </tr>
+    </table>
+
+    <table class="table">
+        <tr>
+            <td class="col-sm-4">Process running for ({{waitTime2}} secs and notifying progress state)</td>
+            <td class="col-sm-2">
+                <button class="btn btn-primary" ng-click="createAndCallPromise2()" ng-disabled="processing2">Start
+                    <i ng-class="{'fa': true, 'fa-play': !processing2, 'fa-spinner': processing2, 'fa-spin':processing2}"></i>
+                </button>
+            </td>
+            <td class="col-sm-3">
+                <progressbar max="waitTime2" type="danger" value="promise2Progress"><span style="color:black; white-space:nowrap;">{{promise2Progress}} / {{waitTime2}}</span></progressbar>
+            </td>
+            <td class="col-sm-3">{{result2}}</td>
+        </tr>
+    </table>
+
+</div>

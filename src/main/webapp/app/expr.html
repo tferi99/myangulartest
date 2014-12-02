@@ -1,0 +1,31 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Expressions';
+        "></div>
+
+<p class="note">
+    Attribute Evaluation: evaluation of all properties are against the scope doing the evaluation, unlike in JavaScript where the expressions are evaluated against the global window.
+</p>
+
+<div ng-controller="ExprController">
+    <p>
+    <table>
+        <tr>
+            <td>num = </td>
+            <td class="result">{{num}}</td>
+        </tr>
+    </table>
+    </p>
+    <hr/>
+
+    <table>
+        <tr>
+            <td>2 + 1 = </td>
+            <td class="result">{{2 + 1}}</td>
+        </tr>
+        <tr>
+            <td>2 + num = </td>
+            <td class="result">{{2 + num}}</td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html ng-app="plunker" >
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS Plunker</title>
+
+    <!--
+    -->
+    <link rel="stylesheet" href="app/component/jquery-ui-1.10.4/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="app/component/bootstrap-3.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="app/component/select2-3.4.8/select2.css">
+    <link rel="stylesheet" href="app/component/font-awesome-4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="app/component/animate.css/animate.css">
+
+    <!-- Application stylesheet -->
+    <link rel="stylesheet" href="app/css/main.css">
+
+
+    <!-- ==================================================== js ======================================================= -->
+    <!-- jquery -->
+    <script src="app/component/jquery-2.1.1/jquery.js"></script>
+    <script src="app/component/jquery-ui-1.10.4/ui/jquery-ui.js"></script>
+
+    <!-- other -->
+    <script src="app/component/select2-3.4.8/select2.js"></script>
+
+    <!-- bootstrap -->
+    <script src="app/component/bootstrap-3.1.1/js/bootstrap.js"></script>
+
+    <!-- AngularJS -->
+    <script src="app/component/angular-1.2.16/angular.js"></script>
+    <script src="app/component/angular-1.2.16/angular-resource.js"></script>
+    <script src="app/component/angular-1.2.16/angular-route.js"></script>
+    <script src="app/component/angular-1.2.16/angular-animate.js"></script>
+
+    <!-- Angular UI -->
+    <script src="app/component/angular-ui-0.4.0/angular-ui.js"></script>
+    <script src="app/component/angular-ui-select2/select2.js"></script>
+
+    <!-- Angular translate -->
+    <script src="app/component/angular-translate-1.1.1/angular-translate.js"></script>
+    <script src="app/component/angular-translate-loader-url-0.1.5/angular-translate-loader-url.js"></script>
+
+    <!-- bootstrap UI -->
+    <script src="app/component/angular-bootstrap-0.11/ui-bootstrap-tpls.js"></script>
+
+    <!-- ******************************************************************************************************** -->
+    <!--
+    <link href="http://rawgithub.com/ivaynberg/select2/master/select2.css" rel="stylesheet"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+    <script src="http://rawgithub.com/ivaynberg/select2/master/select2.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.js"></script>
+    <script src="http://rawgithub.com/angular-ui/ui-select2/master/src/select2.js"></script>
+    -->
+
+    <script type="text/javascript">
+        var app = angular.module('plunker', ['ui.select2']);
+
+        app.controller('MainCtrl', function($scope, $http) {
+            $scope.items = [ { id: "1", name: "text1"}, { id: "2", name: "text2" } ];
+
+            $scope.choose1 = function() {
+                console.log("1 choosen");
+                $scope.selectedItem = "1";
+            };
+
+            $scope.choose2 = function() {
+                console.log("2 choosen");
+                $scope.selectedItem = "2";
+            };
+
+            // $scope.choose1();
+        });
+    </script>
+</head>
+<body ng-controller="MainCtrl">
+
+<select ui-select2 ng-model="selectedItem" data-placeholder="option" >
+    <option value=""></option>
+    <option ng-repeat="it in items" value="{{it.id}}">{{it.name}}</option>
+</select>
+
+<input type="text" ng-model="selectedItem" />
+
+<button ng-click="choose1()">choose 1</button>
+<button ng-click="choose2()">choose 2</button>
+
+<button ng-click="count = count + 1" ng-init="count=0">
+    Increment
+</button>
+count: {{count}}
+
+</body>
+</html>

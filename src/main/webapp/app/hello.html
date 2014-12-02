@@ -1,0 +1,11 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+        header.title='Hello world';
+        header.description='It demonstrates a simple page with a controller.'
+    "
+></div>
+
+<div ng-controller="HelloController">
+    <p>{{greeting.text}}, World!</p>
+</div>
+

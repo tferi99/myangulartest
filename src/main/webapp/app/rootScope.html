@@ -1,0 +1,37 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Root scope inheritance';
+            header.description='Root scope inherited transparently so you can add listeners to it.'
+        "></div>
+
+<div ng-controller="rootScopeCtrl">
+
+    <fieldset ng-controller="rootScopeChildCtrl1">
+        <legend>Controller 1</legend>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Name</label>
+                <div class="col-sm-4">
+                    <input id="name" ng-model="user.name" class="form-control" ng-required="true">
+                </div>
+            </div>
+        </form>
+    </fieldset>
+
+    <fieldset ng-controller="rootScopeChildCtrl2">
+        <legend>Controller 2</legend>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Name</label>
+                <div class="col-sm-4">
+                    <input id="name" ng-model="user.name" class="form-control" ng-required="true">
+                </div>
+            </div>
+            <div class="form-group">
+                {{whoAreYou}}
+            </div>
+        </form>
+    </fieldset>
+
+</div>
+

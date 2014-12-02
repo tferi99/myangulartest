@@ -1,0 +1,16 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Simple directive';
+            header.description='It demonstrates how create custom directives.';
+        "></div>
+
+<div ng-controller="SimpleDirecController">
+    <div>
+        <button ng-click="onCall1(5, 6, 7)">Func</button>
+    </div>
+
+    <my-person person="person1" company="Abc" color="color1" callback="onCall1(2,3,4)"></my-person>
+    <my-person person="person2" color="color2"></my-person>
+    <my-person person="person3" color="color3"></my-person>
+
+</div>

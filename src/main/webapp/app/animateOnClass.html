@@ -1,0 +1,13 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+        header.title='Animation on adding/removing class';
+        header.description=''
+    "></div>
+
+<h4>Animation on adding a class</h4>
+<i class="fa fa-search keyClickAnimation fa-3x"></i>
+
+<div ng-controller="AnimateOnClassCtrl">
+    <button ng-click="animateMe()"><i ng-class="{'fa':true, 'fa-search':true, 'fa-2x':true, 'keyClickAnimation':btnAnim}"></i>Click me</button> {{btnAnim}}
+</div>
+

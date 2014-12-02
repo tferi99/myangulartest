@@ -1,0 +1,18 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='SRC attribute';
+        "></div>
+
+<p class="note">
+    'src' tag does not work even with ng-src, maybe it's still a bug here
+</p>
+
+<div ng-controller="SoundCtrl">
+    <button class="btn btn-primary" ng-click="playSound('fistful')">Fistful</button>
+    <button class="btn btn-primary" ng-click="playSound('nobody')">Nobody</button>
+
+    <audio controls ng-if="sound">
+        <source ng-src="getSoundFileName()" type="audio/wav" codecs="1"></source>
+        <p>Oops, looks like your browser doesn't support HTML 5 audio.</p>
+    </audio>
+</div>

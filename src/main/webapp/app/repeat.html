@@ -1,0 +1,56 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+        header.title='Repetition Test';
+        header.description='Every iteration creates a new scope.'
+    "
+        ></div>
+
+<!--
+<h1>angular: {{2+2}}</h1>
+-->
+
+<div ng-controller="RepeatController as rep">
+    <table class="table">
+        <tr>
+            <td class="header">Name</td>
+            <td class="header">Email</td>
+            <td class="header">Birth</td>
+            <td class="header">Index</td>
+            <td class="header">First</td>
+            <td class="header">Middle</td>
+            <td class="header">Last</td>
+            <td class="header">Even</td>
+            <td class="header">Odd</td>
+
+        </tr>
+        <tr ng-repeat="person in rep.persons">
+            <td>{{person.name}}</td>
+            <td>{{person.email}}</td>
+            <td>{{person.birth}}</td>
+            <td>{{$index}}</td>
+            <td>{{$first}}</td>
+            <td>{{$middle}}</td>
+            <td>{{$last}}</td>
+            <td>{{$even}}</td>
+            <td>{{$odd}}</td>
+        </tr>
+    </table>
+    <p/>
+    <div class="note">
+        $even and $odd are not supported in old versions
+    </div>
+
+    <hr/>
+    <h4>Iterating over object's properties</h4>
+    <table class="table">
+        <tr ng-repeat="person in rep.persons">
+            <td ng-repeat="(name, value) in person">
+                {{value}}
+            </td>
+        </tr>
+    </table>
+    <p/>
+    <div class="note">
+        Object properties can be enumerated with ng-repeat
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Inter Controller Communication';
+            header.description='Sending global messages with broadcast';
+            header.note='see result in log'
+        "></div>
+
+<fieldset ng-controller="InterController1">
+    <legend>Controller 1</legend>
+    <form name="frm1">
+        <input ng-model="ev.recipient" required>
+        <button ng-click="onSend()" ng-disabled="frm1.$invalid">Send</button>
+        {{recipient}}
+    </form>
+</fieldset>
+
+<fieldset ng-controller="InterController2">
+    <legend>Explicit DI</legend>
+    message: {{message}}
+</fieldset>
+

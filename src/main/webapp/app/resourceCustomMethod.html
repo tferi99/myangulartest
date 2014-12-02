@@ -1,0 +1,30 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+        header.title='Custom method to $resource';
+        header.description='
+            Demonstrates how to add custom method to model objects retrived from $resource.
+
+            Since each resulting object returned by $resource is a resource object itself, we can simply extend prototype to include the behavior
+            we want for every individual model instance.
+        '
+    "
+></div>
+
+<div ng-controller="RestCustMethodCtrl">
+    <h4>Calculated field comes from custom method.</h4>
+    <table border="1">
+        <tr>
+            <th class="header">ID</th>
+            <th class="header">Firstname</th>
+            <th class="header">Lastname</th>
+            <th class="header">Calculated fullname</th>
+        </tr>
+        <tr ng-repeat="p in persons">
+            <td>{{p.id}}</td>
+            <td>{{p.firstName}}</td>
+            <td>{{p.lastName}}</td>
+            <td>{{p.getFullName()}}</td>
+        </tr>
+    </table>
+</div>
+

@@ -1,0 +1,154 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+        header.title='Select vs Select2';
+        header.description=''
+    "></div>
+
+<div ng-controller="SelectController">
+    <form class="form">
+
+        <fieldset>
+            <legend>Options from ng-options</legend>
+
+            <table>
+                <tr>
+                    <td class="pushTop col-sm-5">
+                        <h3>Target is primitive</h3>
+
+                        <h4>Select</h4>
+                        <table>
+                            <tr>
+                                <td><select class="form-control"ng-model="currentItemValue" data-placeholder="Choose..." ng-options="i.value as i.label for i in items">
+                                    <option></option>
+                                </select></td>
+                                <td>&nbsp;</td>
+                                <td><input ng-model="currentItemValue" type="text"/></td>
+                                <td><pre>{{currentItemValue | json}}</pre></td>
+                            </tr>
+                        </table>
+
+                        <h4>Select2</h4>
+                        <table>
+                            <tr>
+                                <td><select ui-select2 ng-model="currentItemValue" data-placeholder="Choose...">
+                                    <option></option>
+                                    <option ng-repeat="i in items" value="{{i.value}}" >{{i.label}}</option>
+                                </select></td>
+                                <td>&nbsp;</td>
+                                <td><input ng-model="currentItemValue" type="text"/></td>
+                                <td><pre>{{currentItemValue | json}}</pre></td>
+                            </tr>
+                        </table>
+                    </td>
+
+                    <td class="pushTop col-sm-5">
+                        <h3>Target is object</h3>
+
+                        <h4>Select</h4>
+                        <table>
+                            <tr>
+                                <td class="pushTop"><select class="form-control" ng-model="currentItem" ng-options="i.label for i in items"></select></td>
+                                <td>&nbsp;</td>
+                                <td><pre>{{currentItem | json}}</pre></td>
+                            </tr>
+                        </table>
+
+                        <h4>Select2</h4>
+                        <table>
+                            <tr>
+                                <td class="pushTop"><select ui-select2 ng-model="currentItem" data-placeholder="Choose..." ng-options="i.label for i in items">
+                                    <option></option>
+                                </select></td>
+                                <td>&nbsp;</td>
+                                <td><pre>{{currentItem | json}}</pre></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <fieldset>
+            <legend>Options from ng-repeat</legend>
+
+            <table>
+                <tr>
+                    <td class="pushTop col-sm-5">
+                        <h3>Target is primitive</h3>
+
+                        <h4>Select</h4>
+                        <table>
+                            <tr>
+                                <td><select class="form-control"ng-model="currentItemValue2" data-placeholder="Choose...">
+                                    <option></option>
+                                    <option ng-repeat="i in items" value="{{i.value}}">{{i.label}}</option>
+                                </select></td>
+                                <td>&nbsp;</td>
+                                <td><input ng-model="currentItemValue" type="text"/></td>
+                                <td><pre>{{currentItemValue2 | json}}</pre></td>
+                            </tr>
+                        </table>
+
+                        <h4>Select2</h4>
+                        <table>
+                            <tr>
+                                <td><select ui-select2 ng-model="currentItemValue2" data-placeholder="Choose...">
+                                    <option></option>
+                                    <option ng-repeat="i in items" value="{{i.value}}" >{{i.label}}</option>
+                                </select></td>
+                                <td>&nbsp;</td>
+                                <td><input ng-model="currentItemValue" type="text"/></td>
+                                <td><pre>{{currentItemValue2 | json}}</pre></td>
+                            </tr>
+                        </table>
+                    </td>
+
+                    <td class="pushTop col-sm-5">
+                        <h3>Target is object</h3>
+
+                        <h4>Select</h4>
+                        <table>
+                            <tr>
+                                <td class="pushTop"><select class="form-control" ng-model="currentItem2" ng-options="i.label for i in items"></select></td>
+                                <td>&nbsp;</td>
+                                <td><pre>{{currentItem2 | json}}</pre></td>
+                            </tr>
+                        </table>
+
+                        <h4>Select2</h4>
+                        <table>
+                            <tr>
+                                <td class="pushTop"><select ui-select2 ng-model="currentItem2" data-placeholder="Choose...">
+                                    <option></option>
+                                    <option ng-repeat="i in items" value="{{i}}" >{{i.label}}</option>
+                                </select></td>
+                                <td>&nbsp;</td>
+                                <td><pre>{{currentItem2 | json}}</pre></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+
+
+
+
+        <hr/>
+
+        <select ui-select2 ng-model="selectedItem" data-placeholder="option" >
+            <option value=""></option>
+            <option ng-repeat="it in items2" value="{{it.id}}">{{it.name}}</option>
+        </select>
+
+        <input type="text" ng-model="selectedItem" />
+
+        <button ng-click="choose1()">choose 1</button>
+        <button ng-click="choose2()">choose 2</button>
+
+    </form>
+
+
+
+</div>
+

@@ -1,0 +1,27 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Controller stored into scope variable';
+            header.description='You can specify the name of controller will be stored into $scope variable';
+        "></div>
+
+<div ng-controller="IntoScopeVarController as test">
+    <table>
+        <tr>
+            <td>Number 1</td>
+            <td><input type="number" ng-model="test.num1" ng-required/></td>
+        </tr>
+        <tr>
+            <td>Number 2</td>
+            <td><input type="number" ng-model="test.num2" ng-required/></td>
+        </tr>
+        <tr>
+            <td><b>TOTAL</b></td>
+            <td>{{test.num1 + test.num2}}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button ng-click="test.onSave()">Save</button></td>
+        </tr>
+    </table>
+</div>
+

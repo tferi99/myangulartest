@@ -1,0 +1,79 @@
+
+<div ng-include src="'component/head.html'" ng-init="
+    header.title='Show/hide';
+    header.description='There are several way to control visibility and style.'
+"></div>
+
+<div class="note">
+    Menu 1 uses ng-show which applies 'display' CSS.
+</div>
+<div class="note">
+    Menu 2 uses ng-if which adds/removes element to/from DOM.
+</div>
+
+<div ng-controller="ShowHideController">
+
+    <div style="display: inline" class="menu warning">HELLO</div>
+    <p/>
+
+    <table class="table">
+        <tr>
+            <td>Menu 1</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <span ng-show="menuState['file'].visible">
+                    <span class="menu enabled-{{menuState['file'].enabled}}">File</span>
+                </span>
+            </td>
+            <td>
+                <span ng-show="menuState['edit'].visible">
+                    <span class="menu enabled-{{menuState['edit'].enabled}}">Edit</span>
+                </span>
+            </td>
+            <td>
+                <span ng-show="menuState['options'].visible">
+                    <span class="menu enabled-{{menuState['options'].enabled}}">Options</span>
+                </span>
+            </td>
+            <td>
+                <span class="menu" ng-class="{'enabled-false': menuState['help'].enabled}" ng-show="menuState['help'].visible">Help</span>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Menu 2</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <span class="menu" ng-class="{'enabled-false': menuState['help'].enabled}" ng-if="menuState['file'].visible">File</span>
+            </td>
+            <td>
+                <span class="menu" ng-if="menuState['edit'].visible">Edit</span>
+            </td>
+            <td>
+                <span class="menu" ng-if="menuState['options'].visible">Options</span>
+            </td>
+            <td>
+                <span class="menu" ng-if="menuState['help'].visible">Help</span>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Show/Hide</td>
+            <td><input type="checkbox" ng-model="menuState['file'].visible"/></td>
+            <td><input type="checkbox" ng-model="menuState['edit'].visible"/></td>
+            <td><input type="checkbox" ng-model="menuState['options'].visible"/></td>
+            <td><input type="checkbox" ng-model="menuState['help'].visible"/></td>
+        </tr>
+        <tr>
+            <td>Enable/disable</td>
+            <td><input type="checkbox" ng-model="menuState['file'].enabled"/></td>
+            <td><input type="checkbox" ng-model="menuState['edit'].enabled"/></td>
+            <td><input type="checkbox" ng-model="menuState['options'].enabled"/></td>
+            <td><input type="checkbox" ng-model="menuState['help'].enabled"/></td>
+        </tr>
+    </table>
+</div>

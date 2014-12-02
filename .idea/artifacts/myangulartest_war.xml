@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="myangulartest:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="myangulartest.war">
+      <element id="artifact" artifact-name="myangulartest:war exploded" />
+    </root>
+  </artifact>
+</component>

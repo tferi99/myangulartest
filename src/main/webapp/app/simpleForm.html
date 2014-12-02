@@ -1,0 +1,36 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Form demo';
+            header.description='Form with submission with ng-submit'
+        "></div>
+
+<div ng-controller="SimpleFormController">
+    <form ng-submit="onSave()">
+        <table>
+            <tr>
+                <td>Text</td>
+                <td><input class="form-control" ng-model="data.txt"></td>
+            </tr>
+            <tr>
+                <td>Active</td>
+                <td><input class="form-control" type="checkbox" ng-model="data.active" ng-change="onChangeActive()"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button class="btn btn-primary">OK</button></td>
+            </tr>
+        </table>
+    </form>
+
+    <p/>
+    <pre>{{data | json}}</pre>
+
+    <fieldset>
+        <legend><h4>From different form using the same controller</h4></legend>
+        <form>
+            <button class="btn btn-info" ng-click="onActivate()">Activate</button>
+            <button class="btn btn-info" ng-click="onDeactivate()">Deactivate</button>
+        </form>
+    </fieldset>
+
+</div>

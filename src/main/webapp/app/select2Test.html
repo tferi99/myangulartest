@@ -1,0 +1,25 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+        header.title='Select vs Select2';
+        header.description=''
+    "></div>
+
+<div ng-controller="Select2TestCtrl">
+
+    <select ui-select2 ng-model="selectedItem" data-placeholder="option" >
+        <option value=""></option>
+        <option ng-repeat="it in items" value="{{it.id}}">{{it.name}}</option>
+    </select>
+
+    <input type="text" ng-model="selectedItem" />
+
+    <button ng-click="choose1()">choose 1</button>
+    <button ng-click="choose2()">choose 2</button>
+
+    <button ng-click="count = count + 1" ng-init="count=0">
+        Increment
+    </button>
+    count: {{count}}
+
+</div>
+

@@ -1,0 +1,16 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Animation callbacks';
+            header.description=''
+        "></div>
+
+<div ng-controller="AnimateCallbackCtrl">
+    <button class="btnAnim" leave-on-click="done()">
+        <i class="fa fa-search fa-2x keyClickAnimation"></i>Search
+    </button>
+
+
+    <div class="leaveOnClickAnimated" leave-on-click="done()">Click to remove</div>
+
+</div>
+

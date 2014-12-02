@@ -1,0 +1,17 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Inter Controller Communication - Events';
+            header.description='Sending global messages with emit/broadcast';
+            header.note='see result in log'
+        "></div>
+
+<fieldset scope-test-form ng-controller="InterControllerEventCtrl" title="FORM 1">
+    <button>cica</button>
+</fieldset>
+
+<p/>
+
+<fieldset scope-test-form ng-controller="InterControllerEventCtrl" title="FORM 2 - with directive">
+</fieldset>
+
+

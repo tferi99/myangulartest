@@ -1,0 +1,27 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Most simple directive';
+            header.description='It demonstrates directive features.';
+        "></div>
+
+<fieldset>
+    <legend>Replace</legend>
+    <div class="note">Replace specifies if tag contains directive will be replaced with template</div>
+
+    <div style="background-color: #ffff00">
+        <most-simple></most-simple>
+    </div>
+    <div style="background-color: #ffff00">
+        <most-simple-no-replace></most-simple-no-replace>
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend>Transclude</legend>
+    <div class="note">With transclude you can push the original tag content into a specific template position</div>
+
+    <div style="background-color: orange">
+        <most-simple-transclude>THIS IS THE ORIGINAL CONTENT</most-simple-transclude>
+    </div>
+</fieldset>
+

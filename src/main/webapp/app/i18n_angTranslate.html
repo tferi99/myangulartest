@@ -1,0 +1,41 @@
+
+<div ng-include src="'component/head.html'"
+ ng-init="
+        header.title='I18N';
+        header.description='Translation with AngularTranslate'
+    "></div>
+
+<div ng-controller="TranslateController">
+    <table >
+        <tr>
+            <td><a href="#" ng-class="{currentLanguage : currentLanguage == 'en', notCurrentLanguage : currentLanguage != 'en'}" ng-click="onChangeLanguage('en')"><img src="image/flags/en.png"></a></td>
+            <td><a href="#" ng-class="{currentLanguage : currentLanguage == 'de', notCurrentLanguage : currentLanguage == 'de'}" ng-click="onChangeLanguage('de')"><img src="image/flags/de.png"></a></td>
+        </tr>
+    </table>
+    <h2> {{ 'test.headline' | translate }} </h2>
+    <h3 translate>test.introText</h3>
+    <h3>Only English: {{ 'test.text2' | translate }} </h3>
+
+    <hr/>
+    <table>
+        <tr>
+            <td>Text resource ID</td>
+            <td><input ng-model="txtKey"/></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>{{txtKey | translate}}</td>
+        </tr>
+    </table>
+
+    <hr/>
+    <h2>Translated combo <button class="btn btn-primary" ng-click="init()">Init</button></h2>
+    <div class="note">Press 'Init' if controller initialization called too early and translation database loaded after it.</div>
+    <table>
+        <tr>
+            <td><select ng-model="selectedcomboItem" ng-options="i.translatedLabel for i in comboItems"></select></td>
+            <td>{{selectedcomboItem.translatedLabel}}</td>
+        </tr>
+    </table>
+</div>
+

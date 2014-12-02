@@ -1,0 +1,49 @@
+<div ng-controller="Select2Controller">
+    <h1>Select2</h1>
+
+    <fieldset>
+        <legend>Selecting an object</legend>
+
+        <h4>Method 1</h4>
+        <p>Use a regular <code>&lt;select&gt;</code> tag and <code>ng-repeat</code></p>
+        <select ui-select2 ng-model="selObjId" placeholder="-- Select One --" style="width:200px">
+            <option></option>
+            <option ng-repeat="item in items" value="{{item.id}}">{{item.text}}</option>
+        </select>
+        <p/>
+        <pre>Selected object ID: {{selObjId|json}}</pre>
+        <hr/>
+
+        <h4>Method 2</h4>
+        <p>Use a regular <code>&lt;select&gt;</code> tag and <code>ng-options</code></p>
+        <select id="temp" ui-select2 ng-model="selObj" placeholder="-- Select One --" ng-options="i.text for i in items2" style="width: 200px">
+        </select>
+
+        <button ng-click="directJQueryTemp()">Templating with direct jQuery</button>
+        <p/>
+        <pre>Selected object: {{selObj|json}}</pre>
+        <hr/>
+<!--
+-->
+        <h4>Method 3a</h4>
+        <p>Use a regular <code>&lt;select&gt;</code> tag and <code>ng-options</code> + adding icons, with data</p>
+        <div class="note">Maybe there is here a bug, initial value cleared during startup</div>
+        <sel id="m3a" ui-select2="m3aConfig" ng-model="selObjM3a" placeholder="-- Select One --" style="width: 200px">
+        </sel>
+        <p/>
+        <p/>
+        <pre>Selected object: {{selObjM3a|json}}</pre>
+        <hr/>
+
+        <h4>Method 3b</h4>
+        <p>Use a regular <code>&lt;select&gt;</code> tag and <code>ng-options</code> + adding icons, without data</p>
+        <select id="m3b" ui-select2="m3bConfig" ng-model="selObjM3b" placeholder="-- Select One --" style="width: 200px"
+            ng-options="i.text for i in items2">
+        </select>
+
+        <p/>
+        <pre>Selected object: {{selObjM3b|json}}</pre>
+        <hr/>
+
+    </fieldset>
+</div>

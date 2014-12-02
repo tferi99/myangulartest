@@ -1,0 +1,22 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+    header.title='Components';
+    header.description='How to use components'
+"></div>
+
+<fieldset>
+    <legend>Combo</legend>
+    <div ng-controller="CompController">
+        <h4>Object array (handled with ng-change)</h4>
+        <select ng-model="city" ng-options="city.name for city in cities" ng-change="onChangeCity()">
+            <option value="">Choose a city...</option>
+        </select>
+        Best City: {{ city.name }}
+
+        <h4>Grouped (handled with $watch)</h4>
+        <select ng-model="animal" ng-options="animal.name group by animal.type for animal in animals">
+            <option value="">Choose an animal...</option>
+        </select>
+        Best Animal: {{ animal.name }}
+    </div>
+</fieldset>

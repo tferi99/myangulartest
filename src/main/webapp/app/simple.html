@@ -1,0 +1,15 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+        header.title='Data bind demo';
+        header.description='Simple 2-way data bind with controller.'
+    "></div>
+
+<div ng-controller="SimpleController">
+    <input ng-model="greeting.text"/>
+    <button ng-click="dummy()">Dummy</button>
+    <p>{{greeting.text}}, World!</p>
+
+    <div style="font-size: 10px; font-style: italic; color: red">{{someTextToOut}}</div>
+    <div style="font-size: 10px; font-style: italic; color: green">{{someTextToOut2}}</div>
+</div>
+

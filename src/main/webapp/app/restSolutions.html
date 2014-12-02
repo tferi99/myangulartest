@@ -1,0 +1,130 @@
+<h1>REST solutions</h1>
+
+<h2>With $http</h2>
+<div ng-controller="HttpCtrl">
+    <table>
+        <tr>
+            <td>
+                <table border="1">
+                    <tr ng-repeat="person in persons">
+                        <td>{{person.id}}</td>
+                        <td>{{person.firstName}}</td>
+                        <td>{{person.lastName}}</td>
+                        <td>{{person.email}}</td>
+                        <td><button ng-click="onSelect(person.id)">Edit</button></td>
+                    </tr>
+                </table>
+            </td>
+            <td style="vertical-align: top">
+                <table>
+                    <tr>
+                        <td><button ng-click="onRefresh()">Refresh</button></td>
+                    </tr>
+                    <tr>
+                        <td>Requests: {{requestCounter}}</td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+    <fieldset ng-if="currentPerson">
+        <legend>Edit</legend>
+        <table>
+            <tr>
+                <td>
+                    <table>
+                        <tr>
+                            <td>ID</td>
+                            <td>{{currentPerson.id}}</td>
+                        </tr>
+                        <tr>
+                            <td>First name</td>
+                            <td><input ng-model="currentPerson.firstName"/></td>
+                        </tr>
+                        <tr>
+                            <td>Last name</td>
+                            <td><input ng-model="currentPerson.lastName"/></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><input ng-model="currentPerson.email"/></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td><button ng-click="onSave()">Save</button></td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="vertical-align: top">Requests: {{saveRequestCounter}}</td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <hr/>
+</div>
+
+<h2>With $resource</h2>
+<div ng-controller="ResourceCtrl">
+    <table>
+        <tr>
+            <td>
+                <table border="1">
+                    <tr ng-repeat="person in persons">
+                        <td>{{person.id}}</td>
+                        <td>{{person.firstName}}</td>
+                        <td>{{person.lastName}}</td>
+                        <td>{{person.email}}</td>
+                        <td><button ng-click="onSelect(person.id)">Edit</button></td>
+                    </tr>
+                </table>
+            </td>
+            <td style="vertical-align: top">
+                <table>
+                    <tr>
+                        <td><button ng-click="onRefresh()">Refresh</button></td>
+                    </tr>
+                    <tr>
+                        <td>Requests: {{requestCounter}}</td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+    <fieldset ng-if="currentPerson">
+        <legend>Edit</legend>
+        <table>
+            <tr>
+                <td>
+                    <table>
+                        <tr>
+                            <td>ID</td>
+                            <td>{{currentPerson.id}}</td>
+                        </tr>
+                        <tr>
+                            <td>First name</td>
+                            <td><input ng-model="currentPerson.firstName"/></td>
+                        </tr>
+                        <tr>
+                            <td>Last name</td>
+                            <td><input ng-model="currentPerson.lastName"/></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><input ng-model="currentPerson.email"/></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td><button ng-click="onSave()">Save</button></td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="vertical-align: top">Requests: {{saveRequestCounter}}</td>
+            </tr>
+        </table>
+    </fieldset>
+
+</div>

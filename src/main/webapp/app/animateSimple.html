@@ -1,0 +1,20 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Simple animation with Animate.css';
+            header.description='Animation with standard AngularJS. Only put animation name into class attribute and put appropriate classes into CSS.'
+        "></div>
+
+<h4>Animating with direct CSS from animate.css</h4>
+<div class="animated fadeInLeftBig">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In urna odio, congue vel ultrices et, tincidunt ac ipsum. Morbi sed porta elit, a sagittis ipsum. Suspendisse ut luctus lacus. Aliquam porttitor, ligula et ullamcorper elementum, mi mi lacinia sapien, ut interdum mi ligula non dui. Praesent eget sagittis risus. In elementum non metus quis tristique. Vestibulum euismod dolor enim, at ultrices sem feugiat et.
+</div>
+
+<h4>Animating with 'enter' event of ng-if, it's called during startup</h4>
+<div class="animFadeInRight" ng-if="true">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In urna odio, congue vel ultrices et, tincidunt ac ipsum. Morbi sed porta elit, a sagittis ipsum. Suspendisse ut luctus lacus. Aliquam porttitor, ligula et ullamcorper elementum, mi mi lacinia sapien, ut interdum mi ligula non dui. Praesent eget sagittis risus. In elementum non metus quis tristique. Vestibulum euismod dolor enim, at ultrices sem feugiat et.
+</div>
+
+<h4>Animating using ngAnimate-animate.css on ng-if, it's called during startup</h4>
+<div class="dn-bounce-up" ng-if="true">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In urna odio, congue vel ultrices et, tincidunt ac ipsum. Morbi sed porta elit, a sagittis ipsum. Suspendisse ut luctus lacus. Aliquam porttitor, ligula et ullamcorper elementum, mi mi lacinia sapien, ut interdum mi ligula non dui. Praesent eget sagittis risus. In elementum non metus quis tristique. Vestibulum euismod dolor enim, at ultrices sem feugiat et.
+</div>

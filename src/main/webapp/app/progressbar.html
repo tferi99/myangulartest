@@ -1,0 +1,49 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+        header.title='Bootstrap3 Progress bar';
+        header.description=''
+    "
+        ></div>
+
+<div ng-controller="ProgressbarCtrl">
+    <fieldset>
+        <legend>Method1</legend>
+        <div class="note">This is the recommended way, but expression in style attribute cannot resolved in IE (fixed in method 2)</div>
+
+        <div class="progress content-top-margin">
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{stat.success}}" aria-valuemin="0" aria-valuemax="100" style="width: {{stat.success}}%;">
+                <span class="sr-only">{{stat.success}}%</span>
+            </div>
+            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{stat.info}}" aria-valuemin="0" aria-valuemax="100" style="width: {{stat.info}}%;">
+                <span class="sr-only">{{stat.success}}%</span>
+            </div>
+            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{stat.warning}}" aria-valuemin="0" aria-valuemax="100" style="width: {{stat.warning}}%;">
+                <span class="sr-only">{{stat.success}}%</span>
+            </div>
+            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{stat.danger}}" aria-valuemin="0" aria-valuemax="100" style="width: {{stat.danger}}%;">
+                <span class="sr-only">{{stat.success}}%</span>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <fieldset>
+        <legend>Method2</legend>
+        <div class="note">Here we set a style map and use ng-style. It works in IE, too.</div>
+    <div class="progress content-top-margin">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{stat.success}}" aria-valuemin="0" aria-valuemax="100" ng-style="statSuccessStyle">
+            <span class="sr-only">{{stat.success}}%</span>
+        </div>
+        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{stat.info}}" aria-valuemin="0" aria-valuemax="100" ng-style="statInfoStyle">
+            <span class="sr-only">{{stat.success}}%</span>
+        </div>
+        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{stat.warning}}" aria-valuemin="0" aria-valuemax="100" ng-style="statWarningStyle">
+            <span class="sr-only">{{stat.success}}%</span>
+        </div>
+        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{stat.danger}}" aria-valuemin="0" aria-valuemax="100" ng-style="statDangerStyle">
+            <span class="sr-only">{{stat.success}}%</span>
+        </div>
+    </div>
+    
+    
+</div>

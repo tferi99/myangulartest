@@ -1,0 +1,218 @@
+.note {
+  font-style: italic;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+.important {
+  font-weight: bold;
+  color: red;
+}
+.pushTop {
+  vertical-align: top;
+}
+.header {
+  font-weight: bold;
+  background-color: gray;
+  white-space: nowrap;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.data-field {
+  padding-left: 20px;
+}
+.error {
+  background-color: red;
+  color: #ffffff;
+  font-weight: bold;
+}
+.ok {
+  background-color: green;
+  color: #ffffff;
+  font-weight: bold;
+}
+.result {
+  color: red;
+  font-weight: bold;
+}
+.menu {
+  border: solid 1px blue;
+}
+.important {
+  color: yellow;
+  font-weight: bold;
+}
+.enabled-true,
+.enabled {
+  color: black;
+}
+.enabled-false,
+.disabled {
+  color: gray;
+}
+.err,
+.error-true {
+  background-color: red;
+}
+.warn,
+.warn-true {
+  background-color: orange;
+}
+.warning {
+  background-color: red;
+  color: yellow;
+}
+.tableHead {
+  background-color: gray;
+  font-weight: bold;
+}
+.currentLanguage {
+  padding: 5px;
+  border: blue solid 1px;
+}
+.notCurrentLanguage {
+  padding: 5px;
+}
+.ui-highlight-match {
+  background-color: red;
+  color: yellow;
+  font-weight: bold;
+}
+
+.errorMsg {
+    background-color: red;
+    color: #ffffff;
+    font-weight: bold;
+
+    padding-left: 10px;
+    padding-right: 10px;
+}
+/* ------------------------------------- field styling ------------------------------------------*/
+input.ng-invalid {
+  background-color: #ffdddd;
+}
+input.ng-invalid.ng-dirty {
+  background-color: #ffaaaa;
+}
+input.ng-valid.ng-dirty {
+  background-color: #aaffaa;
+}
+/* -------------------------------------Animation: anim1 ------------------------------------------*/
+.anim1.ng-enter,
+.anim1.ng-leave {
+  -webkit-transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+.anim1.ng-leave.anim1.ng-leave-active,
+.anim1.ng-enter {
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+}
+.anim1.ng-enter.ng-enter-active,
+.anim1.ng-leave {
+  opacity: 1;
+  width: 150px;
+  height: 30px;
+}
+/* -------------------------------------Animation: anim2 ------------------------------------------*/
+.repeat-item.ng-enter,
+.repeat-item.ng-leave {
+  -webkit-transition: 0.5s linear all;
+  transition: 0.5s linear all;
+}
+.repeat-item.ng-enter,
+.repeat-item.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+.repeat-item.ng-leave,
+.repeat-item.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+/* -------------------------------------Animation: anim-height ------------------------------------------*/
+.anim-height.ng-enter {
+  transition: height 0.5s;
+  height: 0px;
+  overflow: hidden;
+}
+.anim-height.ng-enter-active {
+  height: 65px;
+}
+/*
+.animContainer.ng-enter {
+  animation:  FadeIn 2s;
+}
+
+.animContainer.ng-leave {
+  animation:  FadeOut 2s;
+}
+*/
+.animFadeInRight.ng-enter {
+  -webkit-animation: fadeInRightBig 3s;
+  animation: fadeInRightBig 3s;
+}
+/* -------------------------------------Animation: flipflop ------------------------------------------*/
+@-webkit-keyframes flipflop {
+  0% {
+    -webkit-transform: rotateZ(0);
+  }
+  25% {
+    -webkit-transform: rotateY(90deg);
+  }
+  50% {
+    -webkit-transform: rotateZ(0);
+  }
+  75% {
+    -webkit-transform: rotateX(90deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(0);
+  }
+}
+@keyframes flipflop {
+  0% {
+    transform: rotateZ(0);
+  }
+  25% {
+    transform: rotateY(90deg);
+  }
+  50% {
+    transform: rotateZ(0);
+  }
+  75% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+.keyClickAnimation {
+  -webkit-animation: flipflop 1000ms;
+  animation: flipflop 1000ms;
+}
+.leaveOnClickAnimated.ng-leave {
+  opacity: 1;
+  transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+}
+.leaveOnClickAnimated.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+.btnAnim.ng-leave {
+  opacity: 1;
+  transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+}
+.btnAnim.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+.transLeftSlow {
+  -webkit-transition: left 1s ease-out;
+  -moz-transition: left 1s ease-out;
+  -o-transition: left 1s ease-out;
+  transition: left 1s ease-out;
+}

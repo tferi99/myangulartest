@@ -1,0 +1,31 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='SRC attribute';
+        "></div>
+
+<p class="note">
+
+</p>
+
+<div ng-controller="SrcTestCtrl">
+    <label>Country</label>
+    <div class="form-group">
+        <div class="radio">
+            <label>
+                <input type="radio" name="de" value="de" ng-model="country">DE
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="en" value="en" ng-model="country">EN
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="hu" value="hu" ng-model="country">HU
+            </label>
+        </div>
+    </div>
+    
+    <img src="image/flags/{{country}}.png">
+</div>

@@ -1,0 +1,68 @@
+<div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Animate with events';
+            header.description='Animation with standard AngularJS. Only put animation name into class attribute and put appropriate classes into CSS.'
+        "></div>
+
+<h4>Animation by event</h4>
+<div class="note">
+    Classes are automatically applied on element during event processing. E.g. ng-repeat has 'enter/leave' events, so ng-enter and ng-leave classes are added to elements.
+    You have to add animations to CSS (see main.less or main.css).
+</div>
+
+<div class="fromRight" ng-controller="AnimateCtrl" ng-if="true">
+    <button ng-click="showNames = !showNames">show/Hide</button>
+    <input type="checkbox" ng-model="showNames">showNames</input> (It flickers sometimes in Firefox)
+
+    <table ng-class="{'animated': true, 'fadeIn': showNames, 'fadeOut': !showNames}">
+        <tr>
+            <td class="col-md-4" style="vertical-align: top">
+                <h4>anim1</h4>
+                <div class="well" style="margin-top: 30px; width: 200px; overflow: hidden;">
+                    <form class="form-search">
+                        <div class="input-append">
+                            <input type="text" ng-model="search" class="search-query" style="width: 80px">
+                        </div>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li class="anim1" ng-repeat="name in names | filter:search">
+                                <a href="#"> {{name}} </a>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </td>
+
+            <td class="col-md-4" style="vertical-align: top">
+                <h4>repeat-item</h4>
+                <div class="well" style="margin-top: 30px; width: 200px; overflow: hidden;">
+                    <form class="form-search">
+                        <div class="input-append">
+                            <input type="text" ng-model="search" class="search-query" style="width: 80px">
+                        </div>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li class="repeat-item" ng-repeat="name in names | filter:search">
+                                <a href="#"> {{name}} </a>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </td>
+
+            <td class="col-md-4" style="vertical-align: top">
+                <h4>anim-height</h4>
+                <div class="well" style="margin-top: 30px; width: 200px; overflow: hidden;">
+                    <form class="form-search">
+                        <div class="input-append">
+                            <input type="text" ng-model="search" class="search-query" style="width: 80px">
+                        </div>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li class="anim-height" ng-repeat="name in names | filter:search">
+                                <a href="#"> {{name}} </a>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

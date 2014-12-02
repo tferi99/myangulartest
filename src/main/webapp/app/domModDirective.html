@@ -1,0 +1,12 @@
+<div ng-controller="DomModDirectiveCtrl">
+
+    <div ng-include src="'component/head.html'"
+     ng-init="
+            header.title='Directive modifying DOM';
+            header.description='Directives that want to modify the DOM typically use the link option.';
+        "></div>
+
+    <span my-content="someText">This is original text will be updated by directive. It should not be displayed!!!!!</span>
+
+</div>
+
